@@ -21,6 +21,7 @@ Corpus = Union[str, Sequence[str]]
 
 class TermExtraction:
     nlp = spacy.load("en_core_web_sm", parser=False, entity=False)
+    nlp.max_length = 10**8
     matcher = Matcher(nlp.vocab)
     MAX_WORD_LENGTH = 6
     DEFAULT_GENERAL_DOMAIN = pd.read_csv(
