@@ -35,17 +35,16 @@ class TermExtraction:
         {"POS": "DET", "IS_PUNCT": False},
     )
 
+
     patterns = [
-        [adj],
-        [{"POS": {"IN": ["ADJ", "NOUN"]}, "OP": "*", "IS_PUNCT": False}, noun],
+        [{"POS": {"IN": ["VERB"], "NOT_IN": ["ADP", "CCONJ", "PUNCT"]}, "OP": "+", "IS_PUNCT": False}, {
+            "POS": {"IN": ['NOUN', 'ADJ', 'PROPN', 'PUNCT', 'CCONJ', 'ADP']}, "OP": "*"}, 
+            {"POS": {"IN": ['NOUN', 'PROPN', 'ADJ']}}],
         [
-            {"POS": {"IN": ["ADJ", "NOUN"]}, "OP": "*", "IS_PUNCT": False},
-            noun,
-            prep,
-            {"POS": {"IN": ["ADJ", "NOUN"]}, "OP": "*", "IS_PUNCT": False},
-            noun,
+            {"POS": {"IN": ['NOUN', 'PROPN', 'ADJ']}}
         ],
     ]
+
 
     def __init__(
         self,
